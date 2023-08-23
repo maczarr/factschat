@@ -38,7 +38,7 @@ def main():
             )
 
             while True:
-                query = input("\nYou're question: ")
+                query = input("\nYour question: ")
                 if query in ["exit", "bye"]:
                     break
                 
