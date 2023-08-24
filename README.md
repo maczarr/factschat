@@ -16,6 +16,8 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
+_For some installation advices on macOS go to the end of this page_
+
 ## Configuration
 
 Copy the `.env.example` and adjust the content: `cp .env.example .env`
@@ -77,3 +79,41 @@ Sometimes there are no sources provided with the answer. There is an [open issue
 This repository isn't "a product", it's just a bit of fiddling around with the API and try out what's possible with LLMs.
 
 There are no tests for the software and not much failsafes, it will likely fall apart if it's not used as intended.
+
+## Installation advices for macOS
+
+The default Python version on macOS is a bit old. You can install a newer one with [Homebrew](https://brew.sh/):
+
+```bash
+brew install python
+# open a new tab and check the version
+python3 --version
+```
+
+Install `virtualenv`:
+
+```bash
+python3 -m pip install --user virtualenv
+```
+
+If your terminal tells you there is no `virtualenv` chances are high your Python3 bin-folder isn't in the PATH. Add an entry at the very end of your `.zshrc`:
+
+```bash
+export PATH="/Users/YOUR_USERNAME/Library/Python/3.11/bin:$PATH"
+```
+
+(the path to your Python3 bin-folder may be different)
+
+### Error message: libmagic is missing
+
+If you'll get an error message saying `libmagic` is missing when running `create_embeddings.py` the follwing steps helped me:
+
+```bash
+brew install libmagic
+```
+
+and in the activated venv:
+
+```bash
+pip install python-magic
+```
